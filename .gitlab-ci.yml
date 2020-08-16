@@ -1,0 +1,48 @@
+
+# Set the default container image to https://github.com/klakegg/docker-hugo
+image: klakegg/hugo:0.74.2-alpine
+
+variables:
+  # Ensure the git submodules are updated when the pipeline runs
+  GIT_SUBMODULE_STRATEGY: recursive
+  
+stages:
+  - build
+
+# Build the Staging site
+buildStaging:
+  stage: build
+  image:
+    name: klakegg/hugo:ext-ubuntu
+    entrypoint: [""]    
+  tags:
+    - private
+  before_script:
+    # https://docs.gitlab.com/ee/ci/ssh_keys/
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git-core -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p /root/.ssh/
+    - chmod 700 /root/.ssh/
+    - git config --global user.email "cicd@w3p.net"
+    - git config --global user.name "CI-Runner"   
+    # https://docs.gitlab.com/ee/ci/ssh_keys/#verifying-the-ssh-host-keys
+    - echo "$SSH_KNOWN_HOSTS" >> /root/.ssh/known_hosts
+    - chmod 644 /root/.ssh/known_hosts 
+  script:
+    # Run hugo with a different baseURL to ensure links work in the staging site, and flag to include drafts and future posts
+    - hugo --minify --baseURL https://whyhuntatiger.ch/ 
+    - git clone git@gitlab.com:w3p706/whyhuntatiger-ch.git
+    - cd ./whyhuntatiger-ch
+    - git rm -r .
+    - cp -r ../public/* .
+    - git add .
+    - git commit -m "ci-runner"
+    - git push 
+  artifacts:
+    paths:
+      # Create an artifact folder of the hugo "public" output
+      - public
+
+
+
