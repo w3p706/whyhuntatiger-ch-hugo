@@ -9,7 +9,7 @@ head:
 
 about:
   enable: true
-  title: "Über Uns*"
+  title: "Über Uns"
   content : "test"
   # description: >
   #   This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:
@@ -28,7 +28,7 @@ about:
     x2: "img/group.jpg"
 
 demo:
-  title: "Hörproben*"
+  title: "Hörproben"
   songs:
     - src: https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/460787817%3Fsecret_token%3Ds-LGtuw&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true
     - src: https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/460788003%3Fsecret_token%3Ds-Zpuwc&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true
