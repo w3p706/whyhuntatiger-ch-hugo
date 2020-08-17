@@ -30,7 +30,7 @@ buildStaging:
     - echo "$SSH_KNOWN_HOSTS" >> /root/.ssh/known_hosts
     - chmod 644 /root/.ssh/known_hosts 
     - git submodule sync --recursive
-    - git submodule sync --recursive
+    - git submodule update --init --recursive
   script:
     # Run hugo with a different baseURL to ensure links work in the staging site, and flag to include drafts and future posts
     - hugo --minify --baseURL https://whyhuntatiger.ch/ 
