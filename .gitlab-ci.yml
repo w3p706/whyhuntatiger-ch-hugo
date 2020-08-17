@@ -29,9 +29,10 @@ buildStaging:
     # https://docs.gitlab.com/ee/ci/ssh_keys/#verifying-the-ssh-host-keys
     - echo "$SSH_KNOWN_HOSTS" >> /root/.ssh/known_hosts
     - chmod 644 /root/.ssh/known_hosts 
+    - git submodule sync --recursive
+    - git submodule sync --recursive
   script:
     # Run hugo with a different baseURL to ensure links work in the staging site, and flag to include drafts and future posts
-    - git submodule sync --recursive
     - hugo --minify --baseURL https://whyhuntatiger.ch/ 
     - git clone git@gitlab.com:w3p706/whyhuntatiger-ch.git
     - cd ./whyhuntatiger-ch
