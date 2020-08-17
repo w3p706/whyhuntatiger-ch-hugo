@@ -4,7 +4,7 @@ image: klakegg/hugo:0.74.2-alpine
 
 variables:
   # Ensure the git submodules are updated when the pipeline runs
-  GIT_SUBMODULE_STRATEGY: recursive
+  GIT_SUBMODULE_STRATEGY: none
   
 stages:
   - build
@@ -31,6 +31,7 @@ buildStaging:
     - chmod 644 /root/.ssh/known_hosts 
   script:
     # Run hugo with a different baseURL to ensure links work in the staging site, and flag to include drafts and future posts
+    - git -C ./themes/tiger-photo pull origin master
     - hugo --minify --baseURL https://whyhuntatiger.ch/ 
     - git clone git@gitlab.com:w3p706/whyhuntatiger-ch.git
     - cd ./whyhuntatiger-ch
