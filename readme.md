@@ -11,3 +11,13 @@ git commit -m "Initial commit"
 git push -u origin master
 ./bin/hugo serve
 ```
+
+
+Init CI/CD:
+* Create repo für compiled website
+* Change submodule URL to `url = ../tiger-photo.git`
+* Settings > CI/CD > Variables Set:
+    * SSH_KNOWN_HOSTS
+    * SSH_PRIVATE_KEY
+* In the public website repo add Deploy Keys  "ci-runner-deploy-key" with write access
+
