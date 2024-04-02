@@ -7,3 +7,4 @@ content:
     label: Homepage
     path: data/homepage.yml
     type: file
+    format: yaml-frontmatter
