@@ -3,7 +3,7 @@ media:
   output: /img
 
 content:
-  - name: posts
-    label: Posts
-    path: data
-    type: collection
+  - name: homepage
+    label: Homepage
+    path: data/homepage.yml
+    type: file
