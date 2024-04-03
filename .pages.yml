@@ -58,11 +58,6 @@ content:
             type: string
           - name: songs
             type: object
-            fields:
-              - name: src
-                label: Song Source URL
-                type: string
-                list: true
       - name: contact
         type: object
         fields:
