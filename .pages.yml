@@ -56,8 +56,6 @@ content:
           - name: title
             label: Demo Title
             type: string
-          - name: songs
-            type: object
       - name: contact
         type: object
         fields:
