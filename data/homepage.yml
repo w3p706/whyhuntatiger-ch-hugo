@@ -7,8 +7,8 @@ about:
   title: Über Uns
   image:
     alt: Gruppenfoto
-    x: img/group.jpg
-    x2: img/group.jpg
+    x: /img/group.jpg
+    x2: /img/group.jpg
 demo:
   title: Hörproben
   songs:
