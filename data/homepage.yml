@@ -5,6 +5,7 @@ head:
 about:
   enable: true
   title: Über Uns
+  content: ''
   image:
     alt: Gruppenfoto
     x: /img/group.jpg
