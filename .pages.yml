@@ -12,6 +12,56 @@ content:
       - name: head
         type: object
         fields:
-        - name: title
-          label: Website title
-          type: string
+          - name: title
+            label: Website title
+            type: string
+          - name: img_start
+            label: Start Image
+            type: string
+          - name: img_nav
+            label: Navigation Image
+            type: string
+          
+      - name: about
+        type: object
+        fields:
+          - name: enable
+            label: Enable Section
+            type: boolean
+          - name: title
+            label: Section Title
+            type: string
+          - name: content
+            label: About Content
+            type: string
+          - name: image
+            type: object
+            fields:
+              - name: alt
+                label: Image Description
+                type: string
+              - name: x
+                label: Image
+                type: string
+              - name: x2
+                label: High Resolution Image
+                type: string
+      - name: demo
+        type: object
+        fields:
+          - name: title
+            label: Demo Title
+            type: string
+          - name: songs
+            type: list
+            fields:
+              - name: src
+                label: Song Source URL
+                type: string
+      - name: contact
+        type: object
+        fields:
+          - name: email
+            label: Contact Email
+            type: string
+          
