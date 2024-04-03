@@ -56,10 +56,13 @@ content:
           - name: title
             label: Demo Title
             type: string
-          - name: src
-            label: Song Source URL
-            type: string
-            list: true
+          - name: songs
+            type: object
+            fields:
+              - name: src
+                label: Song Source URL
+                type: string
+                list: true
       - name: contact
         type: object
         fields:
