@@ -1,0 +1,57 @@
+name: Publish Blog
+
+on: push
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+
+      # CHEKCOUT REPOSITORY
+
+      - name: Git checkout
+        uses: actions/checkout@v3
+
+
+      # SETUP HUGO
+
+      # Read environemnt variable for subsequent actions.
+      # See: https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable 
+      - name: Read .env
+        run: |
+          . ./.env
+          echo "HUGO_VERSION=${HUGO_VERSION}" >> $GITHUB_ENV          
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '${{ env.HUGO_VERSION }}'
+          extended: true
+
+      - name: Cache Hugo
+        uses: actions/cache@v3
+        with:
+          path: /tmp/hugo_cache
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-            
+
+      - name: Build Blog
+        env:
+          TZ: 'Europe/Berlin'
+        run: hugo --minify --baseURL https://whyhuntatiger.ch/
+
+      # DEPLOY TO REMOTE SERVER
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: victorinus.metanet.ch
+          username: whyhuntatiger
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./public/
+          dry-run: false
+          protocol: ftps
+          port: 21
