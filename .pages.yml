@@ -7,4 +7,11 @@ content:
     label: Homepage
     path: data/homepage.yml
     type: file
-    format: yaml-frontmatter
+    format: yaml
+    fields:
+      - name: head
+        type: object
+        fields:
+        - name: title
+          label: Website title
+          type: string
