@@ -17,10 +17,10 @@ content:
             type: string
           - name: img_start
             label: Start Image
-            type: string
+            type: image
           - name: img_nav
             label: Navigation Image
-            type: string
+            type: image
           
       - name: about
         type: object
@@ -43,9 +43,13 @@ content:
               - name: x
                 label: Image
                 type: image
+                options:
+                  path: src/media/screenshots
               - name: x2
                 label: High Resolution Image
                 type: image
+                options:
+                  path: src/media/screenshots
       - name: demo
         type: object
         fields:
