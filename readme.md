@@ -4,7 +4,7 @@
 ## Local
 
 ```
-./bin/act/act --secret-file .env
+./bin/act/act --secret-file .secrets
 ```
 
 Or published with Github actions
