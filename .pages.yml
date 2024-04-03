@@ -33,7 +33,7 @@ content:
             type: string
           - name: content
             label: About Content
-            type: string
+            type: rich-text
           - name: image
             type: object
             fields:
@@ -42,10 +42,10 @@ content:
                 type: string
               - name: x
                 label: Image
-                type: string
+                type: image
               - name: x2
                 label: High Resolution Image
-                type: string
+                type: image
       - name: demo
         type: object
         fields:
