@@ -8,6 +8,7 @@
 ```
 
 Or published with Github actions
+https://belief-driven-design.com/deploying-hugo-with-github-actions-a78c2117aae/
 
 
 ## Old:
