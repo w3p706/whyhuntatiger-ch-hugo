@@ -1,3 +1,3 @@
 [submodule "themes/tiger-photo"]
 	path = themes/tiger-photo
-	url = https://github.com/w3p706/tiger-photo.git
+	url = git@github.com:w3p706/tiger-photo.git
